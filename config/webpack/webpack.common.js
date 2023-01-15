@@ -19,7 +19,15 @@ module.exports = {
   //   chunkFilename: 'jschunk-[name].bundle.js',
   //   publicPath: ''
   // },
-  resolve: { extensions: ['.jsx', '.js', '.json'] },
+  resolve: {
+    alias: {
+      assets: sourceDirectory + '/assets',
+      components: sourceDirectory + '/components',
+      pages: sourceDirectory + '/pages',
+      utils: sourceDirectory + '/utils'
+    },
+    extensions: ['.jsx', '.js', '.json']
+  },
   module: {
     rules: [
       {

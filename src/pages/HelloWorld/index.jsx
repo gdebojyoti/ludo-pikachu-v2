@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import { bgStyle } from './style'
 
-const App = () => {
+const HelloWorld = () => {
   const [counter, updateCounter] = useState(0)
   return (
     <div className={bgStyle}>
@@ -12,4 +12,4 @@ const App = () => {
   )
 }
 
-export default App
+export default HelloWorld
