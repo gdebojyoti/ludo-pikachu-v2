@@ -1,4 +1,6 @@
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 var sourceDirectory = path.resolve(__dirname, '../../src')
 var publicDirectory = path.resolve(__dirname, '../../public')
@@ -23,13 +25,45 @@ module.exports = {
       {
         test: /\.jsx$/,
         exclude: /node_modules/,
-        use: {
-          loader: "babel-loader",
-          options: {
-            presets: ['@babel/preset-env']
+        use: [
+          {
+            loader: "babel-loader",
+            options: {
+              presets: ['@babel/preset-env']
+            }
+          },
+          {
+            loader: '@linaria/webpack-loader',
+            options: {
+              sourceMap: true
+              // sourceMap: process.env.NODE_ENV !== 'production'
+            }
           }
-        }
+        ]
+      },
+      {
+        test: /\.css$/,
+        use: [
+          {
+            loader: MiniCssExtractPlugin.loader
+          },
+          {
+            loader: 'css-loader',
+            options: {
+              sourceMap: true
+            }
+          }
+        ]
       }
     ]
-  }
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      filename: publicDirectory + '/index.html',
+      template: sourceDirectory + '/index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: 'style.css',
+    })
+  ]
 }
