@@ -10,7 +10,7 @@ module.exports = {
     app: sourceDirectory + '/index.jsx'
   },
   output: {
-    filename: 'app.js',
+    filename: 'js-[hash:8].js',
     path: publicDirectory,
   },
   // output: {
@@ -71,7 +71,7 @@ module.exports = {
       template: sourceDirectory + '/index.html'
     }),
     new MiniCssExtractPlugin({
-      filename: 'style.css',
+      filename: 'style-[hash:8].css',
     })
   ]
 }
