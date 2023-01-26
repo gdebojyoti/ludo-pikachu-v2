@@ -1,6 +1,16 @@
 import { css } from '@linaria/core'
 import { styled } from '@linaria/react'
 
+export const globalStyle = css`
+  :global() {
+    *,
+    *:before,
+    *:after {
+      box-sizing: border-box;
+    }
+  }
+`;
+
 export const bgStyle = css`
   color: gold;
 `
